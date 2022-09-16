@@ -1,0 +1,35 @@
+import java.util.*;
+import java.lang.Math;
+class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        System.out.println(lengthOfLongestSubstring(s));
+    }
+
+
+    public static int lengthOfLongestSubstring(String s) {
+        int l=0;
+        int r=0;
+        int max=0;
+        HashSet<Character> h=new HashSet<Character>();
+        while(r<s.length())
+        {
+            if(!h.contains(s.charAt(r)))
+            {
+                h.add(s.charAt(r));
+                r++;
+                max=Math.max(h.size(),max);
+            }
+            else
+            {
+                h.remove(s.charAt(l));
+                l++;
+            }
+        }
+        return max;
+        
+    }
+}
